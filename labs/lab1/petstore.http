@@ -1,0 +1,8 @@
+### Lab 1 — Petstore. Cliquez sur "Send Request" au-dessus de chaque requête.
+@base = https://petstore3.swagger.io/api/v3
+
+### Exemple : lister les animaux disponibles
+GET {{base}}/pet/findByStatus?status=available
+Accept: application/json
+
+### À vous : écrivez les requêtes suivantes en dessous (voir énoncé, partie B)
