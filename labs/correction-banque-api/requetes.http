@@ -1,0 +1,52 @@
+### Pour tester le lab 3 : remplacer le contenu de CompteController.java par CompteControllerLab3.java.txt
+
+### Labs 2 et 3 — tester l'API banque (lancez d'abord : mvn spring-boot:run)
+@base = http://localhost:8080
+
+### Lister les comptes
+GET {{base}}/comptes
+
+### Lire un compte
+GET {{base}}/comptes/1
+
+### Créer un compte
+POST {{base}}/comptes
+Content-Type: application/json
+
+{ "titulaire": "Emma Roux", "type": "COURANT", "solde": 300 }
+
+### Lire un compte inexistant : 404
+GET {{base}}/comptes/999
+
+### Remplacer un compte
+PUT {{base}}/comptes/1
+Content-Type: application/json
+
+{ "titulaire": "Alice Martin", "type": "EPARGNE", "solde": 2000 }
+
+### Modifier le titulaire (bonus PATCH)
+PATCH {{base}}/comptes/1
+Content-Type: application/json
+
+{ "titulaire": "Alice Dupont" }
+
+### Supprimer : 204
+DELETE {{base}}/comptes/2
+
+### Création invalide (bonus) : 400
+POST {{base}}/comptes
+Content-Type: application/json
+
+{ "type": "COURANT", "solde": 10 }
+
+### Lab 3 — filtres, tri, pagination
+GET {{base}}/comptes?type=EPARGNE
+
+###
+GET {{base}}/comptes?soldeMin=500&tri=solde&ordre=desc
+
+###
+GET {{base}}/comptes?page=0&taille=2
+
+### Cas limite : 400
+GET {{base}}/comptes?taille=0
