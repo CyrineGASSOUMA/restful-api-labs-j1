@@ -1,0 +1,31 @@
+### Lab 1 — Corrigé
+@base = https://petstore3.swagger.io/api/v3
+
+### B1 — Animaux disponibles
+GET {{base}}/pet/findByStatus?status=available
+Accept: application/json
+
+### B2 — Créer un animal (renvoie 200, pas de Location : écart aux bonnes pratiques)
+POST {{base}}/pet
+Content-Type: application/json
+
+{ "id": 987654, "name": "Rex", "photoUrls": [], "status": "available" }
+
+### B3 — Relire l'animal
+GET {{base}}/pet/987654
+
+### B4 — Modifier le statut (id dans le corps, pas dans l'URI)
+PUT {{base}}/pet
+Content-Type: application/json
+
+{ "id": 987654, "name": "Rex", "photoUrls": [], "status": "sold" }
+
+### B5 — Supprimer (renvoie 200 au lieu de 204)
+DELETE {{base}}/pet/987654
+
+### B6 — Relire après suppression : 404
+GET {{base}}/pet/987654
+
+### B7 — Inventaire avec clé d'API
+GET {{base}}/store/inventory
+api_key: special-key
